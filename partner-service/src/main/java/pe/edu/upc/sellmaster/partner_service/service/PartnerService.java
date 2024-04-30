@@ -15,9 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class PartnerService {
-    private final PartnerRepository partnerRepository;
+    public final PartnerRepository partnerRepository;
 
-    @Transactional
     public void addPartner(PartnerRequest request) {
         Partner partner = Partner.builder()
                 .partnerName(request.getPartnerName())
@@ -40,7 +39,6 @@ public class PartnerService {
         return mapToPartnerResponse(partner);
     }
 
-    @Transactional
     public void updatePartner(long id, PartnerRequest request) {
         Partner partner = partnerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Partner not found with id: " + id));

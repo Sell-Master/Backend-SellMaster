@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class TypeOfUserService {
-    private final TypeOfUserRepository typeOfUserRepository;
+    public final TypeOfUserRepository typeOfUserRepository;
 
     public void addTypeOfUser(TypeOfUserRequest typeOfUserRequest) {
         var typeOfUser = TypeOfUser.builder()

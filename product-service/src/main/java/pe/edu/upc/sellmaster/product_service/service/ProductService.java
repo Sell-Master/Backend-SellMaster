@@ -17,7 +17,6 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    @Transactional
     public void addProduct(ProductRequest request) {
         Product product = Product.builder()
                 .productType(request.getProductType())
@@ -41,7 +40,6 @@ public class ProductService {
         return mapToProductResponse(product);
     }
 
-    @Transactional
     public void updateProduct(long id, ProductRequest request) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
