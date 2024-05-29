@@ -22,9 +22,9 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/api/**",
+                                //"/api/**",
                                 "/swagger-resources/**",
-                                "/product-service/v3/api-docs",
+                                //"/product-service/v3/api-docs",
                                 "/webjars/**").permitAll() // Permitir acceso a Swagger
                         .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
                 )
