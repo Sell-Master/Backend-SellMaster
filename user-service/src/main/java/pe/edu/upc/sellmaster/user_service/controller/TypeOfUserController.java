@@ -2,6 +2,7 @@ package pe.edu.upc.sellmaster.user_service.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class TypeOfUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Add a new type of user", description = "Adds a new type of user to the system")
+    @Operation(summary = "Add a new type of user", description = "Adds a new type of user to the system", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "201", description = "Type of user created")
     public void addTypeOfUser(@RequestBody TypeOfUserRequest typeOfUserRequest) {
         this.typeOfUserService.addTypeOfUser(typeOfUserRequest);
@@ -30,7 +31,7 @@ public class TypeOfUserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get all types of users", description = "Retrieves a list of all types of users")
+    @Operation(summary = "Get all types of users", description = "Retrieves a list of all types of users", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "200", description = "Successful retrieval of user types")
     public List<TypeOfUserResponse> getAllTypeOfUsers() {
         return typeOfUserService.getAllTypeOfUsers();
@@ -38,7 +39,7 @@ public class TypeOfUserController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Update a type of user", description = "Updates a specific type of user by their ID")
+    @Operation(summary = "Update a type of user", description = "Updates a specific type of user by their ID", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "200", description = "Type of user updated")
     public void updateTypeOfUser(@PathVariable("id") long id, @RequestBody TypeOfUserRequest typeOfUserRequest) {
         typeOfUserService.updateTypeOfUser(id, typeOfUserRequest);

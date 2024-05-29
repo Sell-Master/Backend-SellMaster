@@ -2,6 +2,7 @@ package pe.edu.upc.sellmaster.user_service.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Add a new user", description = "Adds a new user to the system")
+    @Operation(summary = "Add a new user", description = "Adds a new user to the system", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "201", description = "User created")
     public void addUser(@RequestBody UserRequest userRequest) {
         this.userService.addUser(userRequest);
@@ -30,7 +31,7 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get all users", description = "Retrieves a list of all users")
+    @Operation(summary = "Get all users", description = "Retrieves a list of all users", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "200", description = "Successful retrieval of users")
     public List<UserResponse> getAllUsers() {
         return userService.getAllUsers();
@@ -38,7 +39,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Update a user", description = "Updates a specific user by their ID")
+    @Operation(summary = "Update a user", description = "Updates a specific user by their ID", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "200", description = "User updated")
     public void updateUser(@PathVariable("id") long id, @RequestBody UserRequest userRequest) {
         userService.updateUser(id, userRequest);
@@ -46,7 +47,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Delete a user", description = "Deletes a specific user by their ID")
+    @Operation(summary = "Delete a user", description = "Deletes a specific user by their ID", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "204", description = "User deleted")
     public void deleteUser(@PathVariable("id") long id) {
         userService.deleteUser(id);
@@ -54,7 +55,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get a user by ID", description = "Retrieves a specific user by their ID")
+    @Operation(summary = "Get a user by ID", description = "Retrieves a specific user by their ID", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponse(responseCode = "200", description = "Successful retrieval of user")
     public UserResponse getUserById(@PathVariable("id") long id) {
         return userService.getUserById(id);
