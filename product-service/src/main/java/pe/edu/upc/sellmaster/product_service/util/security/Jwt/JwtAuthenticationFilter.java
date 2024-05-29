@@ -1,4 +1,4 @@
-package pe.edu.upc.sellmaster.product_service.util.Jwt;
+package pe.edu.upc.sellmaster.product_service.util.security.Jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package pe.edu.upc.sellmaster.product_service.util.Jwt;
+package pe.edu.upc.sellmaster.product_service.util.security.Jwt;
 
 
 import io.jsonwebtoken.Claims;
