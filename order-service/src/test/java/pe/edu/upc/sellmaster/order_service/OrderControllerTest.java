@@ -35,7 +35,7 @@ public class OrderControllerTest {
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }
 
-    // Test para agregar una orden
+    // Test para realizar una venta
     @Test
     public void testAddOrder() {
         OrderRequest request = new OrderRequest(new Date(), 200.0, 1L, 1L);

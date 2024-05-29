@@ -32,7 +32,7 @@ public class DispatchControllerTest {
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }
 
-    // Test for adding a dispatch
+    // Test for adding a dispatch (añadir un despacho)
     @Test
     public void testAddDispatch() {
         DispatchRequest dispatchRequest = new DispatchRequest(1L, 2L, 3L, 10, new Date());
@@ -43,6 +43,9 @@ public class DispatchControllerTest {
 
         verify(dispatchService).addDispatch(dispatchRequest);
         assertEquals(expectedResponse.getDispatchID(), actualResponse.getDispatchID());
+        assertEquals(expectedResponse.getProductID(), actualResponse.getProductID());
+        assertEquals(expectedResponse.getUserID(), actualResponse.getUserID());
+        assertEquals(expectedResponse.getQuantity(), actualResponse.getQuantity());
     }
 
     // Test for getting all dispatches
