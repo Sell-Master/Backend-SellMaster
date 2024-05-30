@@ -6,14 +6,12 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import pe.edu.upc.sellmaster.api_gateway.util.JwtAuthenticationFilter;
+
 
 @Configuration
 @EnableWebFluxSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -38,8 +36,7 @@ public class SecurityConfig {
                                 "/user-service/v3/api-docs"
                         ).permitAll() // Permitir acceso a Swagger y API docs
                         .anyExchange().authenticated() // Requerir autenticación para cualquier otra ruta
-                )
-                .addFilterAt(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION); // Añadir el filtro JWT
+                ); // Añadir el filtro JWT
 
         return http.build();
     }
