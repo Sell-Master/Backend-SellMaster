@@ -21,6 +21,7 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable) // Deshabilita CSRF
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
+                                "/api/**",
                                 "/api/auth/**",
                                 "/v3/**",
                                 "/swagger-ui/**",
