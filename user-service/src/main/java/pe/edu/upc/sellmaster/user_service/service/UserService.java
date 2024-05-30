@@ -2,6 +2,7 @@ package pe.edu.upc.sellmaster.user_service.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.sellmaster.user_service.model.dtos.UserRequest;
 import pe.edu.upc.sellmaster.user_service.model.dtos.UserResponse;
@@ -79,6 +80,11 @@ public class UserService {
                 .build();
     }
 
+    public UserResponse getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return mapToUserResponse(user);
+    }
 
     public UserResponse getUserById(long id) {
         User user = userRepository.findById(id)

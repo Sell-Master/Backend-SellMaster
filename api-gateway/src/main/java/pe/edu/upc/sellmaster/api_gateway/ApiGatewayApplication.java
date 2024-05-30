@@ -9,11 +9,13 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableFeignClients
 @OpenAPIDefinition(info = @Info(title = "API Gateway", version = "1.0", description = "Documentation API Gateway v1.0"))
 public class ApiGatewayApplication {
 
@@ -43,6 +45,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.PUT).uri("lb://user-service"))
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.DELETE).uri("lb://user-service"))
 				.route(r -> r.path("/api/users/{id}").and().method(HttpMethod.GET).uri("lb://user-service"))
+				.route(r -> r.path("/api/users/email/{email}").and().method(HttpMethod.GET).uri("lb://user-service")) // Añadir esta línea
 				.route(r -> r.path("/api/auth/login").and().method(HttpMethod.POST).uri("lb://user-service"))
 				.route(r -> r.path("/api/auth/register").and().method(HttpMethod.POST).uri("lb://user-service"))
 				// Rutas para client-service

@@ -60,5 +60,13 @@ public class UserController {
     public UserResponse getUserById(@PathVariable("id") long id) {
         return userService.getUserById(id);
     }
+
+    @GetMapping("/email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get a user by email", description = "Retrieves a specific user by their email", security = @SecurityRequirement(name = "bearerAuth"))
+    @ApiResponse(responseCode = "200", description = "Successful retrieval of user")
+    public UserResponse getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
+    }
 }
 

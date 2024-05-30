@@ -1,13 +1,19 @@
 package pe.edu.upc.sellmaster.api_gateway;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import pe.edu.upc.sellmaster.api_gateway.util.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebFluxSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -15,8 +21,6 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable) // Deshabilita CSRF
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
-                                //"/**",
-                                //"/api/**",
                                 "/api/auth/**",
                                 "/v3/**",
                                 "/swagger-ui/**",
@@ -32,8 +36,10 @@ public class SecurityConfig {
                                 "/user-service/v3/api-docs"
                         ).permitAll() // Permitir acceso a Swagger y API docs
                         .anyExchange().authenticated() // Requerir autenticación para cualquier otra ruta
-                ); // Configura autenticación básica
+                )
+                .addFilterAt(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION); // Añadir el filtro JWT
 
         return http.build();
     }
 }
+
