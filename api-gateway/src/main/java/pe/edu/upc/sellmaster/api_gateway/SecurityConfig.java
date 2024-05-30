@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable) // Deshabilita CSRF
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
-                                //"/api/**",
+                                "/api/**",
                                 "/api/users/email/**",
                                 "/api/auth/**",
                                 "/v3/**",
