@@ -26,17 +26,6 @@ public class ApiGatewayApplication {
 	}
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer(){
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowedHeaders("*");
-			}
-		};
-	}
-
-
-	@Bean
 	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
 		return factory -> factory.setPort(8080);
 	}
