@@ -21,7 +21,7 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
-    @Column(nullable = false)
+    @Column(name = "monto_total", nullable = false) // Aquí se asegura que el nombre en la base de datos sea "monto_total"
     private double montoTotal;
 
     @Column(nullable = false)
