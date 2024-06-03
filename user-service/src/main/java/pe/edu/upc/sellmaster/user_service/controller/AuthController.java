@@ -10,7 +10,6 @@ import pe.edu.upc.sellmaster.user_service.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin
 @RequiredArgsConstructor
 public class AuthController {
 
