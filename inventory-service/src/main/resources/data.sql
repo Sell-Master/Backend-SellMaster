@@ -1,4 +1,4 @@
-INSERT IGNORE INTO inventory (product_id, user_id, stock) VALUES
+INSERT IGNORE INTO inventory (productID, userID, stock) VALUES
     (101, 201, 500),
     (102, 202, 300),
     (103, 203, 200),
