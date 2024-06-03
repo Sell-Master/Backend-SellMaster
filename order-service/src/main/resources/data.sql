@@ -1,5 +1,5 @@
 -- Inserción de datos en la tabla orders
-INSERT IGNORE INTO orders (fecha, montoTotal, clientID, userID) VALUES
+INSERT IGNORE INTO orders (fecha, monto_total, clientID, userID) VALUES
     ('2024-05-31 14:00:00', 150.75, 1, 1),
     ('2024-05-31 15:00:00', 200.00, 2, 1),
     ('2024-05-31 16:00:00', 300.50, 3, 1),
