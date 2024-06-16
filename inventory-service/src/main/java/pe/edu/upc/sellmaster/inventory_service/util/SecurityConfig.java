@@ -14,7 +14,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        /*http
                 .csrf(AbstractHttpConfigurer::disable) // Deshabilita CSRF
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
@@ -30,6 +30,12 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
                 )
                 .httpBasic(withDefaults()); // Configura autenticación básica
+*/
+        http
+                .csrf(AbstractHttpConfigurer::disable) // Deshabilita CSRF
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().permitAll() // Permitir acceso a todas las rutas sin autenticación
+                );
 
         return http.build();
     }
