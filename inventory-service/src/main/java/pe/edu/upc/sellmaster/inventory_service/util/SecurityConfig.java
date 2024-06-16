@@ -22,7 +22,6 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/api/inventory/**",
                                 "/api/**",
                                 "/swagger-resources/**",
                                 "/inventory-service/v3/api-docs",
