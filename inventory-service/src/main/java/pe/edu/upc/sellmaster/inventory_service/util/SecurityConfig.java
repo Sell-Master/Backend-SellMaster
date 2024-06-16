@@ -22,6 +22,7 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
+                                "/api/inventory/**", // Permitir acceso a todas las rutas de inventario
                                 "/api/**",
                                 "/swagger-resources/**",
                                 "/inventory-service/v3/api-docs",

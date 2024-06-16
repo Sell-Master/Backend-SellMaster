@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
                                 "/api/**",
+                                "/api/inventory/**", // Asegúrate de que esta ruta esté permitida
                                 "/api/users/email/**",
                                 "/api/auth/**",
                                 "/v3/**",

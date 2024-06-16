@@ -67,6 +67,7 @@ public class ApiGatewayApplication {
 				.route(r -> r.path("/api/dispatches/{id}").and().method(HttpMethod.DELETE).uri("lb://dispatch-service"))
 				// Rutas para inventory-service
 				.route(r -> r.path("/inventory-service/v3/api-docs").and().method(HttpMethod.GET).uri("lb://inventory-service"))
+				.route(r -> r.path("/api/inventory/**").uri("lb://inventory-service")) // Permitir todas las rutas de inventario
 				.route(r -> r.path("/api/inventory").and().method(HttpMethod.POST).uri("lb://inventory-service"))
 				.route(r -> r.path("/api/inventory").and().method(HttpMethod.GET).uri("lb://inventory-service"))
 				.route(r -> r.path("/api/inventory/{id}").and().method(HttpMethod.GET).uri("lb://inventory-service"))
