@@ -12,6 +12,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import pe.edu.upc.sellmaster.product_service.util.security.Jwt.JwtAuthenticationFilter;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration
 @EnableWebSecurity
@@ -36,9 +38,11 @@ public class SecurityConfig {
                                 "/webjars/**").permitAll() // Permitir acceso a Swagger
                         .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
                 )
+                /*
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);*/
+                .httpBasic(withDefaults());
         return http.build();
     }
 }
