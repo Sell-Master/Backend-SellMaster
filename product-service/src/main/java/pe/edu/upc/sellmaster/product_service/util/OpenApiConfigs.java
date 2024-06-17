@@ -21,7 +21,6 @@ public class OpenApiConfigs {
             @Value("${openapi.service.title}") String serviceTitle,
             @Value("${openapi.service.version}") String serviceVersion,
             @Value("${openapi.service.url}") String url) {
-        final String securitySchemeName = "bearerAuth";
         return new OpenAPI()
                 .servers(List.of(new Server().url(url)))
                 /*
