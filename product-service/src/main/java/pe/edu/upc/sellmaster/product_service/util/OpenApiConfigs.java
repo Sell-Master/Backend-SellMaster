@@ -23,16 +23,6 @@ public class OpenApiConfigs {
             @Value("${openapi.service.url}") String url) {
         return new OpenAPI()
                 .servers(List.of(new Server().url(url)))
-                /*
-                .components(
-                    new Components()
-                        .addSecuritySchemes(
-                            securitySchemeName,
-                            new SecurityScheme()
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                               .bearerFormat("JWT")))
-                .security(List.of(new SecurityRequirement().addList(securitySchemeName)))*/
                 .info(new Info().title(serviceTitle).version(serviceVersion));
     }
 }

@@ -11,7 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -21,22 +20,9 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // Deshabilita CSRF
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(
-                                "/product-service/v3/api-docs/swagger-config",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
-                                "/api/**",
-                                "/swagger-resources/**",
-                                "/product-service/v3/api-docs",
-                                "/webjars/**").permitAll() // Permitir acceso a Swagger
-                        .anyRequest().authenticated() // Requerir autenticación para cualquier otra ruta
+                        .anyRequest().permitAll() // Permitir acceso a todas las rutas sin autenticación
                 )
-                /*
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);*/
-                .httpBasic(withDefaults());
+                .httpBasic(AbstractHttpConfigurer::disable); // Deshabilitar autenticación básica HTTP
         return http.build();
     }
 }
