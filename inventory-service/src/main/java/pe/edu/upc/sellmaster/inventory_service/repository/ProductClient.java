@@ -7,7 +7,7 @@ import pe.edu.upc.sellmaster.inventory_service.model.dtos.ProductResponse;
 
 @FeignClient(name = "product-service")
 public interface ProductClient {
-    @GetMapping("/api/products/{id}")
+    @GetMapping("api/products/{id}")
     ProductResponse getProductById(@PathVariable("id") long id); // Returns ProductResponse directly
 }
 
