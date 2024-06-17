@@ -24,6 +24,7 @@ public class OpenApiConfigs {
         final String securitySchemeName = "bearerAuth";
         return new OpenAPI()
                 .servers(List.of(new Server().url(url)))
+                /*
                 .components(
                     new Components()
                         .addSecuritySchemes(
@@ -32,7 +33,7 @@ public class OpenApiConfigs {
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
                                .bearerFormat("JWT")))
-                .security(List.of(new SecurityRequirement().addList(securitySchemeName)))
+                .security(List.of(new SecurityRequirement().addList(securitySchemeName)))*/
                 .info(new Info().title(serviceTitle).version(serviceVersion));
     }
 }
